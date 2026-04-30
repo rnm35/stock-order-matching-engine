@@ -1,4 +1,4 @@
-# stock-order-matching-engine
+# Stock Order Matching Engine
 A C++ command-line stock order matching engine that reads buy/sell orders from a file, matches them using price-time style rules, tracks the last traded price, and writes execution results to an output file.
 
 ## Project Overview
