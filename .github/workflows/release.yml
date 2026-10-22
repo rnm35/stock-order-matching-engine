@@ -74,6 +74,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" \
+          gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag \
             --title "$GITHUB_REF_NAME" --generate-notes \
             --notes "Command-line tools: ome-cli (order files in the original format) and ome-lobster (LOBSTER replay). The web demo is on GitHub Pages; see the README."
