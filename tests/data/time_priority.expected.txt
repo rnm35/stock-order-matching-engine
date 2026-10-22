@@ -1,0 +1,5 @@
+order o3 5 shares purchased at price 100.00
+order o2 5 shares sold at price 100.00
+order o4 5 shares purchased at price 100.00
+order o2 5 shares sold at price 100.00
+order o10 10 shares unexecuted

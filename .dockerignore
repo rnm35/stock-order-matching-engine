@@ -1,5 +1,5 @@
 .git
 build*/
-data/
+data
 web/
 **/node_modules
