@@ -1,0 +1,4 @@
+order b1 10 shares unexecuted
+order b2 5 shares unexecuted
+order b3 7 shares unexecuted
+order b4 1 shares unexecuted

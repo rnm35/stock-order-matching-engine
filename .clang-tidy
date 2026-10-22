@@ -1,0 +1,49 @@
+# Run with the `tidy` CMake preset (OME_CLANG_TIDY=ON); any finding fails the build.
+# Each disabled check is listed below with the reason.
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  clang-analyzer-*,
+  misc-*,
+  -misc-include-cleaner,
+  -misc-non-private-member-variables-in-classes,
+  -misc-const-correctness,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  -modernize-use-nodiscard,
+  -modernize-use-designated-initializers,
+  performance-*,
+  portability-*,
+  -portability-avoid-pragma-once,
+  readability-*,
+  -readability-braces-around-statements,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
+  -readability-uppercase-literal-suffix,
+  -readability-avoid-return-with-void-value,
+  -readability-named-parameter,
+  -readability-math-missing-parentheses,
+  -readability-trailing-comma
+# bugprone-easily-swappable-parameters: (id, side, qty, price) APIs trip it everywhere.
+# misc-include-cleaner: noisy about standard-library transitive includes.
+# misc-non-private-member-variables-in-classes: plain data structs and test fixtures.
+# misc-const-correctness: wants `const` on every local and iterator; noise over signal here.
+# modernize-use-trailing-return-type / use-nodiscard: style preference.
+# modernize-use-designated-initializers: positional init of small event structs is clearer.
+# portability-avoid-pragma-once: every compiler this project targets supports it.
+# readability-braces-around-statements: single-statement `if (...) return ...;` is house style.
+# readability-identifier-length / magic-numbers: tick prices like 10'000 in tests.
+# readability-function-cognitive-complexity: GoogleTest macros expand to nested branches.
+# readability-uppercase-literal-suffix: `2u` in test expectations.
+# readability-avoid-return-with-void-value: `return reject(...);` is the early-exit idiom.
+# readability-named-parameter: no-op default listener callbacks leave parameters unnamed.
+# readability-math-missing-parentheses / trailing-comma: style preference.
+CheckOptions:
+  # Shifts and masks by literal constants (e.g. `z >> 30` in splitmix64) are fine.
+  bugprone-signed-bitwise.IgnorePositiveIntegerLiterals: true
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'
+ExcludeHeaderFilterRegex: '.*/_deps/.*'
+FormatStyle: file

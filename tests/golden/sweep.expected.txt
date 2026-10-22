@@ -1,0 +1,15 @@
+order b1 10 shares purchased at price 100.00
+order s1 10 shares sold at price 100.00
+order b1 10 shares purchased at price 100.00
+order s4 10 shares sold at price 100.00
+order b1 10 shares purchased at price 100.50
+order s2 10 shares sold at price 100.50
+order b1 3 shares purchased at price 100.75
+order s5 3 shares sold at price 100.75
+order b1 2 shares purchased at price 100.75
+order s6 2 shares sold at price 100.75
+order b2 48 shares purchased at price 99.00
+order s6 48 shares sold at price 99.00
+order b2 10 shares purchased at price 101.00
+order s3 10 shares sold at price 101.00
+order b2 2 shares unexecuted
