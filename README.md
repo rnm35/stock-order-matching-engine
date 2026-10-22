@@ -1,5 +1,13 @@
 # Stock Order Matching Engine
 
+[![CI](https://github.com/rnm35/stock-order-matching-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/rnm35/stock-order-matching-engine/actions/workflows/ci.yml)
+[![Web demo](https://github.com/rnm35/stock-order-matching-engine/actions/workflows/pages.yml/badge.svg)](https://rnm35.github.io/stock-order-matching-engine/)
+[![Release](https://img.shields.io/github/v/release/rnm35/stock-order-matching-engine)](https://github.com/rnm35/stock-order-matching-engine/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**Live demo:** https://rnm35.github.io/stock-order-matching-engine/ (the engine running as
+WebAssembly in your browser, with simulated traders).
+
 A C++20 limit order book and matching engine. It reads buy/sell orders, matches them with
 price-time priority, and reports trades. It started as a university coursework program
 (still in the git history: [`main/main.cpp` at 546e758](https://github.com/rnm35/stock-order-matching-engine/blob/546e7587f30b79a8a7dc157d34f1cfa767b9b811/main/main.cpp))
@@ -164,6 +172,27 @@ covered by tests:
 
 ## Design
 
+```mermaid
+flowchart LR
+    file["Order file<br/>(original format)"] --> cli[ome-cli]
+    lobster["LOBSTER message file"] --> lob[ome-lobster]
+    ui["React UI + simulated traders"] --> wasm
+    mcp["MCP server (Claude)"] --> wasm
+    wasm["WebAssembly bindings<br/>(numbers only)"] --> book
+    cli --> book
+    lob --> book
+    subgraph lib["ome library (C++20)"]
+        book["OrderBook<br/>matching, cancel, modify"] --> sides["2 x BookSide<br/>std::map price to level"]
+        sides --> levels["PriceLevel<br/>FIFO list + cached total"]
+        book --> index["order id to position<br/>hash map (O(1) cancel)"]
+    end
+    book -- "Accepted / Trade / Cancelled /<br/>Modified / Rejected" --> listener["EventListener<br/>(CLI output, UI, tests)"]
+```
+
+Every caller goes through the same `OrderBook`; results come back only as events, so the
+library never prints and holds no global state. Tests attach a recording listener; the
+differential tests run a second, deliberately naive book on the same requests.
+
 | Piece | Data structure | Why |
 |---|---|---|
 | Price levels, per side | `std::map<Price, PriceLevel>`; bids descending, asks ascending | `begin()` is always the best price; O(log L) insert of a new level |
@@ -301,6 +330,23 @@ For Claude Desktop, add to `claude_desktop_config.json`:
 `{"mcpServers": {"order-book": {"command": "node", "args": ["/path/to/repo/web/mcp/server.ts"]}}}`.
 Needs Node 22.18+ (runs the TypeScript directly) and the wasm build. `OME_MODE=legacy` and
 `OME_SEED=<n>` select the rules and the simulation seed.
+
+## Limitations
+
+- One instrument per `OrderBook`, single-threaded: a book is meant to be owned by one
+  thread (the usual design: shard instruments across threads). No locking inside.
+- Order types are limit and market with GTC/IOC/FOK. No stop, iceberg/reserve, pegged or
+  post-only orders, no auctions, no self-trade prevention.
+- Order ids only need to be unique among resting orders (the CLI rejects any repeat in a
+  file).
+- The per-book memory pool reuses freed nodes but returns memory to the system only when the
+  book is destroyed.
+- Performance numbers come from one desktop machine (see "Performance" for how); CI runs the
+  benchmarks too, but shared runners are too noisy to quote.
+- The LOBSTER replay can only check executions against orders visible in the file (see
+  "Real Nasdaq data").
+- The web simulation runs on the browser's main thread; at very high bot speeds the UI frame
+  rate drops before the engine does.
 
 ## Repository Structure
 
