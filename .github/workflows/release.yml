@@ -1,0 +1,81 @@
+# On a version tag (v1.2.3): build the command-line tools for Linux and Windows, run the
+# test suite, and publish a GitHub Release with the binaries attached.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        include:
+          - name: Linux x86-64
+            os: ubuntu-24.04
+            package: linux-x86_64
+            # Static C++ runtime so the binaries don't depend on the build machine's libstdc++.
+            cmake-args: -G Ninja -DCMAKE_CXX_COMPILER=g++-14 "-DCMAKE_EXE_LINKER_FLAGS=-static-libstdc++ -static-libgcc"
+          - name: Windows x86-64
+            os: windows-2025
+            package: windows-x86_64
+            # Static MSVC runtime: no Visual C++ redistributable needed.
+            cmake-args: -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Ninja
+        if: runner.os == 'Linux'
+        run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - name: Test
+        shell: bash
+        run: |
+          cmake -S . -B build-test -DCMAKE_BUILD_TYPE=Release -DOME_BUILD_BENCH=OFF ${{ runner.os == 'Linux' && '-G Ninja -DCMAKE_CXX_COMPILER=g++-14' || '' }}
+          cmake --build build-test --config Release --parallel 4
+          ctest --test-dir build-test -C Release --output-on-failure --parallel 4
+      - name: Build release binaries
+        shell: bash
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DOME_BUILD_TESTS=OFF -DOME_BUILD_BENCH=OFF ${{ matrix.cmake-args }}
+          cmake --build build --config Release --target ome-cli ome-lobster --parallel 4
+      - name: Package
+        shell: bash
+        run: |
+          name="ome-${GITHUB_REF_NAME}-${{ matrix.package }}"
+          mkdir -p "dist/$name"
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            cp build/Release/ome-cli.exe build/Release/ome-lobster.exe "dist/$name/"
+          else
+            cp build/ome-cli build/ome-lobster "dist/$name/"
+          fi
+          cp README.md LICENSE examples/input1.txt "dist/$name/"
+          cd dist
+          if [ "$RUNNER_OS" = "Windows" ]; then 7z a "$name.zip" "$name" > /dev/null; else tar czf "$name.tar.gz" "$name"; fi
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.package }}
+          path: dist/*.*
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag \
+            --title "$GITHUB_REF_NAME" --generate-notes \
+            --notes "Command-line tools: ome-cli (order files in the original format) and ome-lobster (LOBSTER replay). The web demo is on GitHub Pages; see the README."

@@ -1,0 +1,6 @@
+# Same as the top-level config, except:
+# clang-analyzer-deadcode.DeadStores: Google Benchmark's `for (auto _ : state)` loop
+#   variable is never read, by design.
+InheritParentConfig: true
+Checks: >
+  -clang-analyzer-deadcode.DeadStores

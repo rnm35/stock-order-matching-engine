@@ -1,0 +1,576 @@
+:root {
+  --bg: #0d1117;
+  --panel: #151b23;
+  --panel-raised: #1c2430;
+  --border: #283241;
+  --text: #dbe3ee;
+  --muted: #8592a3;
+  --bid: #2fbf71;
+  --bid-fill: rgba(47, 191, 113, 0.22);
+  --ask: #f0506e;
+  --ask-fill: rgba(240, 80, 110, 0.22);
+  --accent: #5aa2ff;
+  --mine: #f5b942;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f4f6f9;
+    --panel: #ffffff;
+    --panel-raised: #f0f3f7;
+    --border: #d9dfe7;
+    --text: #18202b;
+    --muted: #5d6b7c;
+    --bid: #13864a;
+    --bid-fill: rgba(19, 134, 74, 0.16);
+    --ask: #c92a4a;
+    --ask-fill: rgba(201, 42, 74, 0.14);
+    --accent: #1f6fd6;
+    --mine: #b7791f;
+    color-scheme: light;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.hint {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.bid {
+  color: var(--bid);
+}
+
+.ask {
+  color: var(--ask);
+}
+
+.empty,
+.loading,
+.fatal {
+  color: var(--muted);
+  padding: 16px;
+}
+
+.fatal {
+  color: var(--ask);
+}
+
+/* ---- Layout ------------------------------------------------------------------- */
+
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.brand h1 {
+  font-size: 20px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  min-width: 84px;
+}
+
+.stat dt {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.stat dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 320px;
+  grid-template-areas:
+    "ladder chart side"
+    "ladder orders side";
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+}
+
+.ladder-panel {
+  grid-area: ladder;
+}
+
+.chart-panel {
+  grid-area: chart;
+}
+
+.orders-panel {
+  grid-area: orders;
+}
+
+.side {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas:
+      "chart side"
+      "ladder side"
+      "orders orders";
+  }
+}
+
+@media (max-width: 760px) {
+  .app {
+    padding: 12px 16px;
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "chart" "side" "ladder" "orders";
+  }
+  .stat {
+    min-width: 0;
+    flex: 1 1 30%;
+  }
+}
+
+/* ---- Ladder ------------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 4px 6px;
+}
+
+td {
+  padding: 3px 6px;
+}
+
+.ladder {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.ladder th.qty,
+.ladder th.count,
+.ladder td.count {
+  text-align: right;
+}
+
+.ladder-row {
+  cursor: pointer;
+}
+
+.ladder-row:hover {
+  background: var(--panel-raised);
+}
+
+.ladder-row.bid .price {
+  color: var(--bid);
+}
+
+.ladder-row.ask .price {
+  color: var(--ask);
+}
+
+.ladder td.qty {
+  position: relative;
+  text-align: right;
+}
+
+.ladder .bar {
+  position: absolute;
+  inset: 2px 0 2px auto;
+  border-radius: 2px;
+}
+
+.ladder-row.bid .bar {
+  background: var(--bid-fill);
+}
+
+.ladder-row.ask .bar {
+  background: var(--ask-fill);
+}
+
+.ladder .num {
+  position: relative;
+}
+
+.ladder td.count {
+  color: var(--muted);
+}
+
+.mine-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mine);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.spread-row td {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 6px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- Depth chart -------------------------------------------------------------- */
+
+.depth-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.depth-chart .area.bid {
+  fill: var(--bid-fill);
+  stroke: var(--bid);
+  stroke-width: 1.5;
+}
+
+.depth-chart .area.ask {
+  fill: var(--ask-fill);
+  stroke: var(--ask);
+  stroke-width: 1.5;
+}
+
+.depth-chart .gridline {
+  stroke: var(--border);
+  stroke-dasharray: 2 4;
+}
+
+.depth-chart .axis-line {
+  stroke: var(--border);
+}
+
+.depth-chart .axis {
+  fill: var(--muted);
+  font-size: 11px;
+  font-family: var(--mono);
+}
+
+.depth-chart .mid-line {
+  stroke: var(--muted);
+  stroke-dasharray: 3 3;
+}
+
+.depth-chart .user-line {
+  stroke: var(--mine);
+  stroke-width: 1.5;
+}
+
+.depth-chart .readout line {
+  stroke: var(--text);
+  opacity: 0.4;
+}
+
+.depth-chart .readout text {
+  font-size: 12px;
+  font-family: var(--mono);
+}
+
+.depth-chart .readout text.bid {
+  fill: var(--bid);
+}
+
+.depth-chart .readout text.ask {
+  fill: var(--ask);
+}
+
+/* ---- Forms and controls -------------------------------------------------------- */
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: var(--panel-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button.small {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-size: 12px;
+  text-align: left;
+}
+
+input,
+select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: var(--mono);
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--ask);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.order-entry,
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.segmented .on.buy,
+.submit.buy {
+  background: var(--bid);
+  border-color: var(--bid);
+  color: #fff;
+}
+
+.segmented .on.sell,
+.submit.sell {
+  background: var(--ask);
+  border-color: var(--ask);
+  color: #fff;
+}
+
+.submit {
+  padding: 9px;
+  font-weight: 600;
+}
+
+.result {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 13px;
+}
+
+.result.ok {
+  color: var(--bid);
+}
+
+.result.warn {
+  color: var(--mine);
+}
+
+.slider input {
+  padding: 0;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: 0;
+  padding: 6px 10px 8px;
+}
+
+legend {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 0 4px;
+}
+
+label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+label.check input {
+  width: auto;
+}
+
+.small-print {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ---- Tables: your orders, trades ----------------------------------------------- */
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.orders {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.orders .num {
+  text-align: right;
+  font-family: var(--mono);
+}
+
+.orders tbody tr {
+  border-top: 1px solid var(--border);
+}
+
+.orders tr.cancelled,
+.orders tr.rejected {
+  opacity: 0.6;
+}
+
+.tape {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.tape li {
+  display: grid;
+  grid-template-columns: 18px 1fr 1fr 90px;
+  gap: 6px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.tape .qty {
+  text-align: right;
+  color: var(--text);
+}
+
+.tape .tag {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--mine);
+  text-align: right;
+}
+
+.tape li.mine {
+  background: color-mix(in srgb, var(--mine) 14%, transparent);
+}

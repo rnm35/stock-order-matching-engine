@@ -1,0 +1,187 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Build everything and run the full ctest suite on each compiler.
+  build-test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux · GCC 14
+            os: ubuntu-24.04
+            cmake-args: -G Ninja -DCMAKE_CXX_COMPILER=g++-14
+          - name: Linux · Clang 18
+            os: ubuntu-24.04
+            cmake-args: -G Ninja -DCMAKE_CXX_COMPILER=clang++-18
+          - name: Windows · MSVC
+            os: windows-2025
+            cmake-args: ""
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Ninja
+        if: runner.os == 'Linux'
+        run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${{ matrix.cmake-args }}
+      - name: Build
+        run: cmake --build build --config Release --parallel 4
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure --parallel 4
+
+  # The whole suite under AddressSanitizer + UndefinedBehaviorSanitizer.
+  sanitizers:
+    name: ASan + UBSan (Clang)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - run: cmake --preset asan -DOME_BUILD_BENCH=OFF
+      - run: cmake --build --preset asan --parallel 4
+      - run: ctest --preset asan --parallel 4
+
+  # clang-tidy on every project source (warnings are errors), and clang-format.
+  # Versions are pinned so results don't change under us; clang-format matches the
+  # version the code was formatted with.
+  static-analysis:
+    name: clang-tidy + clang-format
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.12"
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - run: pip install clang-format==23.1.3 clang-tidy==22.1.8
+      - name: clang-format
+        run: git ls-files '*.cpp' '*.hpp' | xargs clang-format --dry-run --Werror
+      - name: clang-tidy
+        run: |
+          clang-tidy --version
+          cmake --preset tidy
+          # -k 0: report every file's findings, not just the first failing one.
+          cmake --build --preset tidy --parallel 4 -- -k 0
+
+  # Coverage-guided fuzzing for a fixed time per target (libFuzzer + ASan/UBSan).
+  fuzz:
+    name: Fuzz (libFuzzer, 2 × 90 s)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - run: cmake --preset fuzz -DOME_BUILD_BENCH=OFF
+      - run: cmake --build --preset fuzz --target parse_fuzz book_fuzz --parallel 4
+      - name: Fuzz the parser
+        run: |
+          mkdir -p corpus/parse
+          build-fuzz/tests/parse_fuzz -max_total_time=90 -print_final_stats=1 corpus/parse tests/fuzz/corpus/parse_fuzz
+      - name: Fuzz the book against the reference book
+        run: |
+          mkdir -p corpus/book
+          build-fuzz/tests/book_fuzz -max_total_time=90 -print_final_stats=1 corpus/book tests/fuzz/corpus/book_fuzz
+      - name: Keep crashing inputs
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: fuzz-crashes
+          path: crash-*
+
+  # OrderBook vs the naive ReferenceBook on 20 million random operations.
+  differential:
+    name: Differential test (20M operations)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DOME_BUILD_BENCH=OFF
+      - run: cmake --build build --target ome-difftest --parallel 4
+      - run: build/tests/ome-difftest --ops 1000000 --seed 1 --seeds 10 --mode both
+
+  # Benchmarks on a shared CI runner: noisy, kept as an artifact to spot big regressions.
+  # The numbers in the README were measured on a dedicated machine.
+  benchmarks:
+    name: Benchmarks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DOME_BUILD_TESTS=OFF
+      - run: cmake --build build --target ome-bench ome-latency --parallel 4
+      - name: Run
+        run: |
+          build/bench/ome-bench --benchmark_repetitions=3 --benchmark_report_aggregates_only=true \
+            --benchmark_out=bench.json --benchmark_out_format=json
+          build/bench/ome-latency --depth 10000 --runs 3 | tee latency.txt
+      - uses: actions/upload-artifact@v7
+        with:
+          name: benchmarks
+          path: |
+            bench.json
+            latency.txt
+
+  # The engine compiled to WebAssembly, then the web app's typecheck, tests and build.
+  web:
+    name: WebAssembly + web app
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx install ninja==1.13.2  # from PyPI: the Ubuntu mirror has hung on apt-get update
+      - uses: mymindstorm/setup-emsdk@4528d102f7230f0e7b276855c01ea1159be0e984 # v16
+        with:
+          version: 6.0.11
+          actions-cache-folder: emsdk-cache
+      - name: Build the engine to WebAssembly
+        run: |
+          export EMSDK="${EMSDK:-$(dirname "$(dirname "$(dirname "$(command -v emcc)")")")}"
+          cmake --preset wasm
+          cmake --build --preset wasm
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.20.0
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - working-directory: web
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: web-dist
+          path: web/dist
+
+  # The CLI's Docker image builds and processes the README example correctly.
+  docker:
+    name: Docker image
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t ome-cli .
+      - name: Smoke test
+        run: |
+          mkdir -p out
+          docker run --rm -v "$PWD/examples:/in:ro" -v "$PWD/out:/out" ome-cli /in/input1.txt -o /out/output1.txt -q
+          diff out/output1.txt tests/data/readme_example.legacy.expected.txt

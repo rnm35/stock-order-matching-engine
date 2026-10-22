@@ -1,0 +1,6 @@
+# Same as the top-level config, except:
+# bugprone-unchecked-optional-access: tests read `book.find(id).value()` on purpose; if the
+#   order is missing, value() throws and GoogleTest reports that as a failure.
+InheritParentConfig: true
+Checks: >
+  -bugprone-unchecked-optional-access

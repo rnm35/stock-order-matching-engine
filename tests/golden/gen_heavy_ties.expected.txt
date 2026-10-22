@@ -1,0 +1,713 @@
+order o0 12 shares purchased at price 100.49
+order o1 12 shares sold at price 100.49
+order o2 21 shares purchased at price 100.29
+order o1 21 shares sold at price 100.29
+order o2 57 shares purchased at price 100.44
+order o3 57 shares sold at price 100.44
+order o7 47 shares purchased at price 99.72
+order o5 47 shares sold at price 99.72
+order o9 23 shares purchased at price 99.72
+order o5 23 shares sold at price 99.72
+order o10 31 shares purchased at price 99.99
+order o6 31 shares sold at price 99.99
+order o11 18 shares purchased at price 99.99
+order o6 18 shares sold at price 99.99
+order o9 49 shares purchased at price 99.83
+order o13 49 shares sold at price 99.83
+order o17 63 shares purchased at price 99.49
+order o14 63 shares sold at price 99.49
+order o22 42 shares purchased at price 99.43
+order o18 42 shares sold at price 99.43
+order o27 22 shares purchased at price 99.43
+order o18 22 shares sold at price 99.43
+order o27 22 shares purchased at price 99.48
+order o23 22 shares sold at price 99.48
+order o28 25 shares purchased at price 99.48
+order o23 25 shares sold at price 99.48
+order o29 35 shares purchased at price 99.48
+order o23 35 shares sold at price 99.48
+order o30 17 shares purchased at price 99.48
+order o23 17 shares sold at price 99.48
+order o30 13 shares purchased at price 99.49
+order o14 13 shares sold at price 99.49
+order o30 58 shares purchased at price 99.71
+order o20 58 shares sold at price 99.71
+order o31 2 shares purchased at price 99.71
+order o20 2 shares sold at price 99.71
+order o31 33 shares purchased at price 99.82
+order o24 33 shares sold at price 99.82
+order o32 7 shares purchased at price 99.82
+order o24 7 shares sold at price 99.82
+order o32 5 shares purchased at price 99.83
+order o13 5 shares sold at price 99.83
+order o32 15 shares purchased at price 99.91
+order o12 15 shares sold at price 99.91
+order o33 8 shares purchased at price 99.91
+order o12 8 shares sold at price 99.91
+order o35 15 shares purchased at price 99.91
+order o12 15 shares sold at price 99.91
+order o36 4 shares purchased at price 99.91
+order o12 4 shares sold at price 99.91
+order o38 21 shares purchased at price 99.91
+order o12 21 shares sold at price 99.91
+order o40 3 shares purchased at price 99.91
+order o12 3 shares sold at price 99.91
+order o40 29 shares purchased at price 99.97
+order o16 29 shares sold at price 99.97
+order o44 34 shares purchased at price 99.97
+order o16 34 shares sold at price 99.97
+order o42 17 shares purchased at price 99.96
+order o48 17 shares sold at price 99.96
+order o42 20 shares purchased at price 99.96
+order o49 20 shares sold at price 99.96
+order o46 12 shares purchased at price 99.86
+order o51 12 shares sold at price 99.86
+order o53 66 shares purchased at price 99.81
+order o51 66 shares sold at price 99.81
+order o53 20 shares purchased at price 99.94
+order o49 20 shares sold at price 99.94
+order o54 26 shares purchased at price 99.94
+order o49 26 shares sold at price 99.94
+order o54 7 shares purchased at price 99.97
+order o16 7 shares sold at price 99.97
+order o55 22 shares purchased at price 99.97
+order o16 22 shares sold at price 99.97
+order o55 16 shares purchased at price 99.99
+order o6 16 shares sold at price 99.99
+order o55 21 shares purchased at price 100.00
+order o19 21 shares sold at price 100.00
+order o56 64 shares purchased at price 100.00
+order o19 64 shares sold at price 100.00
+order o56 2 shares purchased at price 100.06
+order o43 2 shares sold at price 100.06
+order o59 69 shares purchased at price 100.06
+order o43 69 shares sold at price 100.06
+order o59 11 shares purchased at price 100.07
+order o41 11 shares sold at price 100.07
+order o63 31 shares purchased at price 99.90
+order o60 31 shares sold at price 99.90
+order o64 2 shares purchased at price 99.90
+order o60 2 shares sold at price 99.90
+order o64 11 shares purchased at price 100.07
+order o41 11 shares sold at price 100.07
+order o65 28 shares purchased at price 100.06
+order o67 28 shares sold at price 100.06
+order o68 57 shares purchased at price 100.07
+order o41 57 shares sold at price 100.07
+order o68 25 shares purchased at price 100.10
+order o3 25 shares sold at price 100.10
+order o70 33 shares purchased at price 100.17
+order o37 33 shares sold at price 100.17
+order o70 19 shares purchased at price 100.19
+order o50 19 shares sold at price 100.19
+order o70 2 shares purchased at price 100.21
+order o34 2 shares sold at price 100.21
+order o68 12 shares purchased at price 100.11
+order o74 12 shares sold at price 100.11
+order o73 26 shares purchased at price 100.09
+order o74 26 shares sold at price 100.09
+order o73 3 shares purchased at price 100.09
+order o75 3 shares sold at price 100.09
+order o77 4 shares purchased at price 100.12
+order o80 4 shares sold at price 100.12
+order o81 13 shares purchased at price 100.16
+order o76 13 shares sold at price 100.16
+order o81 16 shares purchased at price 100.21
+order o34 16 shares sold at price 100.21
+order o77 54 shares purchased at price 100.12
+order o86 54 shares sold at price 100.12
+order o73 29 shares purchased at price 100.09
+order o86 29 shares sold at price 100.09
+order o87 4 shares purchased at price 100.13
+order o89 4 shares sold at price 100.13
+order o73 19 shares purchased at price 100.09
+order o90 19 shares sold at price 100.09
+order o73 2 shares purchased at price 100.09
+order o91 2 shares sold at price 100.09
+order o62 50 shares purchased at price 99.88
+order o91 50 shares sold at price 99.88
+order o85 11 shares purchased at price 99.85
+order o91 11 shares sold at price 99.85
+order o66 30 shares purchased at price 99.84
+order o91 30 shares sold at price 99.84
+order o95 75 shares purchased at price 99.98
+order o94 75 shares sold at price 99.98
+order o97 2 shares purchased at price 99.98
+order o94 2 shares sold at price 99.98
+order o97 42 shares purchased at price 100.13
+order o89 42 shares sold at price 100.13
+order o97 10 shares purchased at price 100.13
+order o92 10 shares sold at price 100.13
+order o98 12 shares purchased at price 100.13
+order o92 12 shares sold at price 100.13
+order o105 21 shares purchased at price 100.00
+order o104 21 shares sold at price 100.00
+order o102 68 shares purchased at price 99.96
+order o112 68 shares sold at price 99.96
+order o108 23 shares purchased at price 99.93
+order o112 23 shares sold at price 99.93
+order o108 37 shares purchased at price 99.93
+order o113 37 shares sold at price 99.93
+order o66 37 shares purchased at price 99.84
+order o113 37 shares sold at price 99.84
+order o71 18 shares purchased at price 99.83
+order o113 18 shares sold at price 99.83
+order o114 33 shares purchased at price 99.98
+order o111 33 shares sold at price 99.98
+order o114 46 shares purchased at price 100.00
+order o104 46 shares sold at price 100.00
+order o114 19 shares purchased at price 100.03
+order o109 19 shares sold at price 100.03
+order o118 13 shares purchased at price 99.87
+order o117 13 shares sold at price 99.87
+order o120 50 shares purchased at price 99.87
+order o117 50 shares sold at price 99.87
+order o122 21 shares purchased at price 99.87
+order o117 21 shares sold at price 99.87
+order o122 42 shares purchased at price 100.03
+order o109 42 shares sold at price 100.03
+order o71 66 shares purchased at price 99.83
+order o124 66 shares sold at price 99.83
+order o125 62 shares purchased at price 99.85
+order o123 62 shares sold at price 99.85
+order o126 34 shares purchased at price 100.03
+order o109 34 shares sold at price 100.03
+order o126 11 shares purchased at price 100.05
+order o100 11 shares sold at price 100.05
+order o127 4 shares purchased at price 100.01
+order o129 4 shares sold at price 100.01
+order o127 33 shares purchased at price 100.01
+order o131 33 shares sold at price 100.01
+order o132 7 shares purchased at price 100.05
+order o100 7 shares sold at price 100.05
+order o136 32 shares purchased at price 100.05
+order o100 32 shares sold at price 100.05
+order o136 37 shares purchased at price 100.06
+order o106 37 shares sold at price 100.06
+order o135 47 shares purchased at price 100.03
+order o138 47 shares sold at price 100.03
+order o127 17 shares purchased at price 100.01
+order o138 17 shares sold at price 100.01
+order o127 10 shares purchased at price 100.01
+order o139 10 shares sold at price 100.01
+order o127 33 shares purchased at price 100.01
+order o140 33 shares sold at price 100.01
+order o130 8 shares purchased at price 100.00
+order o140 8 shares sold at price 100.00
+order o147 54 shares purchased at price 100.06
+order o106 54 shares sold at price 100.06
+order o147 33 shares purchased at price 100.07
+order o142 33 shares sold at price 100.07
+order o130 22 shares purchased at price 100.00
+order o150 22 shares sold at price 100.00
+order o153 13 shares purchased at price 100.01
+order o151 13 shares sold at price 100.01
+order o154 5 shares purchased at price 100.01
+order o151 5 shares sold at price 100.01
+order o154 56 shares purchased at price 100.05
+order o152 56 shares sold at price 100.05
+order o130 49 shares purchased at price 100.00
+order o157 49 shares sold at price 100.00
+order o143 3 shares purchased at price 99.89
+order o157 3 shares sold at price 99.89
+order o143 48 shares purchased at price 99.89
+order o159 48 shares sold at price 99.89
+order o146 48 shares purchased at price 99.87
+order o159 48 shares sold at price 99.87
+order o146 19 shares purchased at price 99.87
+order o161 19 shares sold at price 99.87
+order o125 36 shares purchased at price 99.86
+order o161 36 shares sold at price 99.86
+order o71 1 shares purchased at price 99.83
+order o161 1 shares sold at price 99.83
+order o144 13 shares purchased at price 99.82
+order o161 13 shares sold at price 99.82
+order o166 4 shares purchased at price 99.89
+order o160 4 shares sold at price 99.89
+order o167 93 shares purchased at price 99.89
+order o160 93 shares sold at price 99.89
+order o167 1 shares purchased at price 100.05
+order o152 1 shares sold at price 100.05
+order o162 2 shares purchased at price 99.88
+order o168 2 shares sold at price 99.88
+order o162 26 shares purchased at price 99.88
+order o171 26 shares sold at price 99.88
+order o174 54 shares purchased at price 99.89
+order o170 54 shares sold at price 99.89
+order o175 7 shares purchased at price 99.89
+order o170 7 shares sold at price 99.89
+order o175 25 shares purchased at price 99.90
+order o173 25 shares sold at price 99.90
+order o162 20 shares purchased at price 99.88
+order o177 20 shares sold at price 99.88
+order o178 19 shares purchased at price 99.83
+order o177 19 shares sold at price 99.83
+order o181 44 shares purchased at price 99.83
+order o177 44 shares sold at price 99.83
+order o144 52 shares purchased at price 99.82
+order o185 52 shares sold at price 99.82
+order o145 22 shares purchased at price 99.81
+order o186 22 shares sold at price 99.81
+order o187 14 shares purchased at price 99.83
+order o180 14 shares sold at price 99.83
+order o189 3 shares purchased at price 99.83
+order o180 3 shares sold at price 99.83
+order o189 7 shares purchased at price 99.90
+order o173 7 shares sold at price 99.90
+order o145 37 shares purchased at price 99.81
+order o190 37 shares sold at price 99.81
+order o58 3 shares purchased at price 99.79
+order o190 3 shares sold at price 99.79
+order o193 1 shares purchased at price 99.90
+order o173 1 shares sold at price 99.90
+order o193 43 shares purchased at price 99.94
+order o169 43 shares sold at price 99.94
+order o196 27 shares purchased at price 99.94
+order o169 27 shares sold at price 99.94
+order o196 45 shares purchased at price 100.00
+order o183 45 shares sold at price 100.00
+order o197 7 shares purchased at price 100.00
+order o183 7 shares sold at price 100.00
+order o198 11 shares purchased at price 100.00
+order o183 11 shares sold at price 100.00
+order o198 25 shares purchased at price 100.05
+order o152 25 shares sold at price 100.05
+order o198 34 shares purchased at price 100.06
+order o148 34 shares sold at price 100.06
+order o58 88 shares purchased at price 99.79
+order o199 88 shares sold at price 99.79
+order o203 13 shares purchased at price 100.06
+order o148 13 shares sold at price 100.06
+order o203 18 shares purchased at price 100.06
+order o156 18 shares sold at price 100.06
+order o203 34 shares purchased at price 100.07
+order o142 34 shares sold at price 100.07
+order o203 16 shares purchased at price 100.08
+order o119 16 shares sold at price 100.08
+order o202 44 shares purchased at price 100.02
+order o204 44 shares sold at price 100.02
+order o202 16 shares purchased at price 100.02
+order o207 16 shares sold at price 100.02
+order o201 10 shares purchased at price 100.01
+order o207 10 shares sold at price 100.01
+order o201 22 shares purchased at price 100.01
+order o208 22 shares sold at price 100.01
+order o200 18 shares purchased at price 99.99
+order o208 18 shares sold at price 99.99
+order o206 4 shares purchased at price 99.86
+order o208 4 shares sold at price 99.86
+order o206 13 shares purchased at price 99.86
+order o210 13 shares sold at price 99.86
+order o213 4 shares purchased at price 99.87
+order o211 4 shares sold at price 99.87
+order o214 28 shares purchased at price 99.87
+order o211 28 shares sold at price 99.87
+order o215 36 shares purchased at price 99.87
+order o211 36 shares sold at price 99.87
+order o215 36 shares purchased at price 100.06
+order o212 36 shares sold at price 100.06
+order o215 9 shares purchased at price 100.08
+order o119 9 shares sold at price 100.08
+order o217 3 shares purchased at price 100.08
+order o119 3 shares sold at price 100.08
+order o217 29 shares purchased at price 100.08
+order o192 29 shares sold at price 100.08
+order o217 63 shares purchased at price 100.10
+order o179 63 shares sold at price 100.10
+order o216 81 shares purchased at price 99.96
+order o222 81 shares sold at price 99.96
+order o216 15 shares purchased at price 99.96
+order o224 15 shares sold at price 99.96
+order o219 14 shares purchased at price 99.95
+order o224 14 shares sold at price 99.95
+order o218 19 shares purchased at price 99.93
+order o224 19 shares sold at price 99.93
+order o206 3 shares purchased at price 99.86
+order o224 3 shares sold at price 99.86
+order o58 1 shares purchased at price 99.79
+order o224 1 shares sold at price 99.79
+order o176 15 shares purchased at price 99.79
+order o224 15 shares sold at price 99.79
+order o230 56 shares purchased at price 99.87
+order o225 56 shares sold at price 99.87
+order o226 59 shares purchased at price 99.82
+order o231 59 shares sold at price 99.82
+order o228 50 shares purchased at price 99.81
+order o232 50 shares sold at price 99.81
+order o233 30 shares purchased at price 99.87
+order o225 30 shares sold at price 99.87
+order o238 37 shares purchased at price 100.10
+order o179 37 shares sold at price 100.10
+order o238 14 shares purchased at price 100.12
+order o191 14 shares sold at price 100.12
+order o238 37 shares purchased at price 100.12
+order o234 37 shares sold at price 100.12
+order o233 13 shares purchased at price 100.04
+order o239 13 shares sold at price 100.04
+order o240 4 shares purchased at price 100.08
+order o242 4 shares sold at price 100.08
+order o233 32 shares purchased at price 100.04
+order o242 32 shares sold at price 100.04
+order o228 4 shares purchased at price 99.81
+order o242 4 shares sold at price 99.81
+order o176 53 shares purchased at price 99.79
+order o242 53 shares sold at price 99.79
+order o245 28 shares purchased at price 100.05
+order o248 28 shares sold at price 100.05
+order o247 8 shares purchased at price 99.82
+order o248 8 shares sold at price 99.82
+order o247 68 shares purchased at price 99.82
+order o252 68 shares sold at price 99.82
+order o253 20 shares purchased at price 100.12
+order o234 20 shares sold at price 100.12
+order o253 14 shares purchased at price 100.13
+order o92 14 shares sold at price 100.13
+order o254 18 shares purchased at price 100.13
+order o92 18 shares sold at price 100.13
+order o247 6 shares purchased at price 99.82
+order o256 6 shares sold at price 99.82
+order o176 26 shares purchased at price 99.79
+order o256 26 shares sold at price 99.79
+order o47 4 shares purchased at price 99.78
+order o256 4 shares sold at price 99.78
+order o61 15 shares purchased at price 99.78
+order o256 15 shares sold at price 99.78
+order o258 16 shares purchased at price 99.83
+order o255 16 shares sold at price 99.83
+order o258 9 shares purchased at price 100.13
+order o92 9 shares sold at price 100.13
+order o258 4 shares purchased at price 100.13
+order o209 4 shares sold at price 100.13
+order o261 37 shares purchased at price 100.13
+order o209 37 shares sold at price 100.13
+order o261 29 shares purchased at price 100.14
+order o250 29 shares sold at price 100.14
+order o259 13 shares purchased at price 100.12
+order o262 13 shares sold at price 100.12
+order o259 4 shares purchased at price 100.12
+order o265 4 shares sold at price 100.12
+order o266 1 shares purchased at price 100.14
+order o250 1 shares sold at price 100.14
+order o266 51 shares purchased at price 100.17
+order o84 51 shares sold at price 100.17
+order o266 10 shares purchased at price 100.17
+order o103 10 shares sold at price 100.17
+order o268 69 shares purchased at price 100.16
+order o269 69 shares sold at price 100.16
+order o259 29 shares purchased at price 100.12
+order o269 29 shares sold at price 100.12
+order o259 32 shares purchased at price 100.12
+order o274 32 shares sold at price 100.12
+order o267 42 shares purchased at price 100.11
+order o274 42 shares sold at price 100.11
+order o271 24 shares purchased at price 99.95
+order o274 24 shares sold at price 99.95
+order o271 32 shares purchased at price 99.95
+order o277 32 shares sold at price 99.95
+order o270 30 shares purchased at price 99.88
+order o277 30 shares sold at price 99.88
+order o270 53 shares purchased at price 99.88
+order o278 53 shares sold at price 99.88
+order o279 13 shares purchased at price 99.86
+order o278 13 shares sold at price 99.86
+order o281 55 shares purchased at price 100.02
+order o283 55 shares sold at price 100.02
+order o287 32 shares purchased at price 100.03
+order o286 32 shares sold at price 100.03
+order o288 52 shares purchased at price 100.03
+order o286 52 shares sold at price 100.03
+order o289 3 shares purchased at price 100.03
+order o286 3 shares sold at price 100.03
+order o289 29 shares purchased at price 100.05
+order o284 29 shares sold at price 100.05
+order o281 30 shares purchased at price 100.02
+order o292 30 shares sold at price 100.02
+order o290 45 shares purchased at price 100.01
+order o292 45 shares sold at price 100.01
+order o290 26 shares purchased at price 100.01
+order o293 26 shares sold at price 100.01
+order o296 29 shares purchased at price 99.92
+order o293 29 shares sold at price 99.92
+order o296 11 shares purchased at price 100.03
+order o291 11 shares sold at price 100.03
+order o296 2 shares purchased at price 100.05
+order o284 2 shares sold at price 100.05
+order o296 7 shares purchased at price 100.15
+order o295 7 shares sold at price 100.15
+order o296 3 shares purchased at price 100.17
+order o103 3 shares sold at price 100.17
+order o296 15 shares purchased at price 100.19
+order o83 15 shares sold at price 100.19
+order o279 21 shares purchased at price 99.90
+order o297 21 shares sold at price 99.90
+order o299 3 shares purchased at price 99.97
+order o302 3 shares sold at price 99.97
+order o279 10 shares purchased at price 99.90
+order o302 10 shares sold at price 99.90
+order o272 5 shares purchased at price 99.84
+order o302 5 shares sold at price 99.84
+order o285 3 shares purchased at price 99.83
+order o302 3 shares sold at price 99.83
+order o304 36 shares purchased at price 99.81
+order o302 36 shares sold at price 99.81
+order o304 10 shares purchased at price 100.00
+order o305 10 shares sold at price 100.00
+order o61 5 shares purchased at price 99.78
+order o305 5 shares sold at price 99.78
+order o78 53 shares purchased at price 99.78
+order o305 53 shares sold at price 99.78
+order o93 12 shares purchased at price 99.78
+order o305 12 shares sold at price 99.78
+order o311 59 shares purchased at price 99.96
+order o308 59 shares sold at price 99.96
+order o313 96 shares purchased at price 99.91
+order o312 96 shares sold at price 99.91
+order o306 15 shares purchased at price 99.81
+order o314 15 shares sold at price 99.81
+order o306 40 shares purchased at price 99.81
+order o316 40 shares sold at price 99.81
+order o93 9 shares purchased at price 99.78
+order o316 9 shares sold at price 99.78
+order o220 9 shares purchased at price 99.77
+order o316 9 shares sold at price 99.77
+order o220 72 shares purchased at price 99.77
+order o317 72 shares sold at price 99.77
+order o319 1 shares purchased at price 99.91
+order o312 1 shares sold at price 99.91
+order o319 29 shares purchased at price 99.96
+order o308 29 shares sold at price 99.96
+order o319 23 shares purchased at price 100.01
+order o310 23 shares sold at price 100.01
+order o220 1 shares purchased at price 99.77
+order o322 1 shares sold at price 99.77
+order o246 21 shares purchased at price 99.77
+order o322 21 shares sold at price 99.77
+order o57 19 shares purchased at price 99.76
+order o322 19 shares sold at price 99.76
+order o325 59 shares purchased at price 99.87
+order o323 59 shares sold at price 99.87
+order o326 15 shares purchased at price 99.87
+order o323 15 shares sold at price 99.87
+order o57 13 shares purchased at price 99.76
+order o328 13 shares sold at price 99.76
+order o99 17 shares purchased at price 99.76
+order o328 17 shares sold at price 99.76
+order o260 7 shares purchased at price 99.76
+order o328 7 shares sold at price 99.76
+order o79 1 shares purchased at price 99.75
+order o328 1 shares sold at price 99.75
+order o195 56 shares purchased at price 99.74
+order o328 56 shares sold at price 99.74
+order o331 52 shares purchased at price 99.84
+order o330 52 shares sold at price 99.84
+order o332 12 shares purchased at price 99.87
+order o323 12 shares sold at price 99.87
+order o332 33 shares purchased at price 99.88
+order o320 33 shares sold at price 99.88
+order o333 2 shares purchased at price 99.88
+order o320 2 shares sold at price 99.88
+order o331 26 shares purchased at price 99.85
+order o334 26 shares sold at price 99.85
+order o195 6 shares purchased at price 99.74
+order o334 6 shares sold at price 99.74
+order o249 20 shares purchased at price 99.72
+order o334 20 shares sold at price 99.72
+order o335 29 shares purchased at price 99.88
+order o320 29 shares sold at price 99.88
+order o335 33 shares purchased at price 100.01
+order o310 33 shares sold at price 100.01
+order o336 29 shares purchased at price 99.98
+order o337 29 shares sold at price 99.98
+order o340 73 shares purchased at price 99.72
+order o338 73 shares sold at price 99.72
+order o340 1 shares purchased at price 99.73
+order o337 1 shares sold at price 99.73
+order o342 9 shares purchased at price 99.73
+order o337 9 shares sold at price 99.73
+order o342 11 shares purchased at price 99.80
+order o339 11 shares sold at price 99.80
+order o342 29 shares purchased at price 100.01
+order o310 29 shares sold at price 100.01
+order o342 21 shares purchased at price 100.04
+order o303 21 shares sold at price 100.04
+order o345 31 shares purchased at price 99.81
+order o344 31 shares sold at price 99.81
+order o345 14 shares purchased at price 100.04
+order o303 14 shares sold at price 100.04
+order o345 21 shares purchased at price 100.04
+order o327 21 shares sold at price 100.04
+order o348 57 shares purchased at price 100.04
+order o327 57 shares sold at price 100.04
+order o348 30 shares purchased at price 100.07
+order o300 30 shares sold at price 100.07
+order o349 61 shares purchased at price 100.07
+order o300 61 shares sold at price 100.07
+order o349 2 shares purchased at price 100.14
+order o315 2 shares sold at price 100.14
+order o350 10 shares purchased at price 100.14
+order o315 10 shares sold at price 100.14
+order o351 1 shares purchased at price 100.15
+order o354 1 shares sold at price 100.15
+order o350 78 shares purchased at price 100.14
+order o354 78 shares sold at price 100.14
+order o357 60 shares purchased at price 100.16
+order o301 60 shares sold at price 100.16
+order o358 13 shares purchased at price 100.16
+order o301 13 shares sold at price 100.16
+order o358 3 shares purchased at price 100.19
+order o83 3 shares sold at price 100.19
+order o358 3 shares purchased at price 100.19
+order o347 3 shares sold at price 100.19
+order o350 6 shares purchased at price 100.14
+order o359 6 shares sold at price 100.14
+order o352 59 shares purchased at price 100.04
+order o359 59 shares sold at price 100.04
+order o355 18 shares purchased at price 99.96
+order o359 18 shares sold at price 99.96
+order o360 35 shares purchased at price 100.19
+order o347 35 shares sold at price 100.19
+order o361 46 shares purchased at price 100.19
+order o347 46 shares sold at price 100.19
+order o361 22 shares purchased at price 100.20
+order o223 22 shares sold at price 100.20
+order o365 6 shares purchased at price 100.10
+order o364 6 shares sold at price 100.10
+order o355 22 shares purchased at price 99.96
+order o368 22 shares sold at price 99.96
+order o369 25 shares purchased at price 99.84
+order o368 25 shares sold at price 99.84
+order o370 29 shares purchased at price 99.84
+order o368 29 shares sold at price 99.84
+order o371 6 shares purchased at price 99.84
+order o368 6 shares sold at price 99.84
+order o372 59 shares purchased at price 100.04
+order o366 59 shares sold at price 100.04
+order o372 6 shares purchased at price 100.10
+order o364 6 shares sold at price 100.10
+order o371 42 shares purchased at price 100.03
+order o378 42 shares sold at price 100.03
+order o374 12 shares purchased at price 99.98
+order o378 12 shares sold at price 99.98
+order o374 39 shares purchased at price 99.98
+order o379 39 shares sold at price 99.98
+order o380 5 shares purchased at price 100.10
+order o364 5 shares sold at price 100.10
+order o380 68 shares purchased at price 100.20
+order o223 68 shares sold at price 100.20
+order o380 8 shares purchased at price 100.20
+order o276 8 shares sold at price 100.20
+order o381 12 shares purchased at price 100.20
+order o276 12 shares sold at price 100.20
+order o382 27 shares purchased at price 100.20
+order o276 27 shares sold at price 100.20
+order o382 19 shares purchased at price 100.21
+order o34 19 shares sold at price 100.21
+order o374 4 shares purchased at price 99.98
+order o383 4 shares sold at price 99.98
+order o367 80 shares purchased at price 99.83
+order o383 80 shares sold at price 99.83
+order o356 16 shares purchased at price 99.81
+order o383 16 shares sold at price 99.81
+order o384 10 shares purchased at price 100.21
+order o34 10 shares sold at price 100.21
+order o384 2 shares purchased at price 100.21
+order o184 2 shares sold at price 100.21
+order o385 43 shares purchased at price 99.99
+order o388 43 shares sold at price 99.99
+order o386 21 shares purchased at price 99.90
+order o388 21 shares sold at price 99.90
+order o390 19 shares purchased at price 100.10
+order o391 19 shares sold at price 100.10
+order o390 66 shares purchased at price 100.10
+order o392 66 shares sold at price 100.10
+order o386 3 shares purchased at price 99.90
+order o393 3 shares sold at price 99.90
+order o387 43 shares purchased at price 99.82
+order o393 43 shares sold at price 99.82
+order o356 33 shares purchased at price 99.81
+order o393 33 shares sold at price 99.81
+order o396 33 shares purchased at price 100.02
+order o392 33 shares sold at price 100.02
+order o396 36 shares purchased at price 100.15
+order o398 36 shares sold at price 100.15
+order o395 26 shares purchased at price 99.96
+order o398 26 shares sold at price 99.96
+order o397 25 shares purchased at price 99.95
+order o398 25 shares sold at price 99.95
+order o4 93 shares unexecuted
+order o8 41 shares unexecuted
+order o15 21 shares unexecuted
+order o21 63 shares unexecuted
+order o25 40 shares unexecuted
+order o26 63 shares unexecuted
+order o39 50 shares unexecuted
+order o45 61 shares unexecuted
+order o52 84 shares unexecuted
+order o69 75 shares unexecuted
+order o72 47 shares unexecuted
+order o82 25 shares unexecuted
+order o88 100 shares unexecuted
+order o96 10 shares unexecuted
+order o101 57 shares unexecuted
+order o107 98 shares unexecuted
+order o110 51 shares unexecuted
+order o115 52 shares unexecuted
+order o116 82 shares unexecuted
+order o121 36 shares unexecuted
+order o128 87 shares unexecuted
+order o133 87 shares unexecuted
+order o134 20 shares unexecuted
+order o137 87 shares unexecuted
+order o141 84 shares unexecuted
+order o149 59 shares unexecuted
+order o155 24 shares unexecuted
+order o158 36 shares unexecuted
+order o163 46 shares unexecuted
+order o164 62 shares unexecuted
+order o165 49 shares unexecuted
+order o172 13 shares unexecuted
+order o182 30 shares unexecuted
+order o184 68 shares unexecuted
+order o188 76 shares unexecuted
+order o194 7 shares unexecuted
+order o205 66 shares unexecuted
+order o221 88 shares unexecuted
+order o227 3 shares unexecuted
+order o229 76 shares unexecuted
+order o235 40 shares unexecuted
+order o236 22 shares unexecuted
+order o237 29 shares unexecuted
+order o241 69 shares unexecuted
+order o243 54 shares unexecuted
+order o244 92 shares unexecuted
+order o251 76 shares unexecuted
+order o257 28 shares unexecuted
+order o263 75 shares unexecuted
+order o264 91 shares unexecuted
+order o273 7 shares unexecuted
+order o275 14 shares unexecuted
+order o280 82 shares unexecuted
+order o282 89 shares unexecuted
+order o294 20 shares unexecuted
+order o298 77 shares unexecuted
+order o307 73 shares unexecuted
+order o309 47 shares unexecuted
+order o318 22 shares unexecuted
+order o321 53 shares unexecuted
+order o324 86 shares unexecuted
+order o329 11 shares unexecuted
+order o341 24 shares unexecuted
+order o343 27 shares unexecuted
+order o346 1 shares unexecuted
+order o353 35 shares unexecuted
+order o356 25 shares unexecuted
+order o362 37 shares unexecuted
+order o363 10 shares unexecuted
+order o373 45 shares unexecuted
+order o375 97 shares unexecuted
+order o376 44 shares unexecuted
+order o377 18 shares unexecuted
+order o389 68 shares unexecuted
+order o394 12 shares unexecuted
+order o397 6 shares unexecuted
+order o399 7 shares unexecuted

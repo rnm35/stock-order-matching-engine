@@ -1,0 +1,15 @@
+order m2 4 shares purchased at price 50.00
+order m1 4 shares sold at price 50.00
+order l1 5 shares purchased at price 51.00
+order m1 5 shares sold at price 51.00
+order m3 1 shares purchased at price 51.00
+order m1 1 shares sold at price 51.00
+order m3 2 shares purchased at price 52.00
+order l2 2 shares sold at price 52.00
+order l4 3 shares purchased at price 48.00
+order m4 3 shares sold at price 48.00
+order m5 2 shares purchased at price 48.00
+order m4 2 shares sold at price 48.00
+order m5 1 shares purchased at price 49.00
+order l3 1 shares sold at price 49.00
+order m5 1 shares unexecuted
