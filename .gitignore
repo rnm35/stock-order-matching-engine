@@ -1,6 +1,4 @@
 build*/
-legacy/main_original
-legacy/main_original.exe
 # machine-specific presets (e.g. a dependency dir outside a path with '[')
 CMakeUserPresets.json
 # LOBSTER and other third-party market data: licensed, never commit

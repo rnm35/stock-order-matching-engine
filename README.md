@@ -2,8 +2,9 @@
 
 A C++20 limit order book and matching engine. It reads buy/sell orders, matches them with
 price-time priority, and reports trades. It started as a university coursework program
-(kept in [`legacy/`](legacy/)) and is being rebuilt to exchange-style standards; see
-[PLAN.md](PLAN.md) for the roadmap.
+(still in the git history: [`main/main.cpp` at 546e758](https://github.com/rnm35/stock-order-matching-engine/blob/546e7587f30b79a8a7dc157d34f1cfa767b9b811/main/main.cpp))
+and was rebuilt to exchange-style standards; [PLAN.md](PLAN.md) records how, phase by
+phase, with every measurement.
 
 ## Features
 
@@ -151,8 +152,8 @@ at the same price, in arrival order, until it is filled or nothing acceptable is
 
 ### Fixed from the original
 
-The original program (`legacy/main_original.cpp`) had these bugs, all fixed and covered by
-tests:
+The original program (`main/main.cpp` in commit 546e758) had these bugs, all fixed and
+covered by tests:
 
 1. Ties at the same price were broken by comparing order ids as strings (`"o10" < "o2"`),
    and partially filled orders lost their place in the queue.
@@ -316,5 +317,5 @@ tests/          unit tests, CLI/golden tests (data/, golden/), reference book an
                 differential harness (support/, differential/), fuzz targets (fuzz/)
 examples/       sample input
 tools/          gen_orders.py (random order files), make_golden.py (golden outputs)
-legacy/         the original coursework program, kept for reference
+.github/        CI, release and Pages workflows
 ```

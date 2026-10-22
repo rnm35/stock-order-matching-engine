@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Regenerate the golden test files in tests/golden/.
 
-The expected outputs come from the ORIGINAL coursework program (legacy/main_original.cpp),
-not from the new engine, with only bug 1 from PLAN.md fixed:
+The expected outputs come from the ORIGINAL coursework program, not from the new engine.
+It is read from git history (ORIGINAL below: main/main.cpp in the repository's original
+commit), so this script needs a clone with full history. Only bug 1 from PLAN.md is fixed:
   - same-price ties broken by arrival order instead of comparing order ids as strings;
   - a partially filled resting order keeps its place instead of moving to the back.
 Bugs 2-4 don't affect the output file's contents, so nothing else is changed.
@@ -26,6 +27,9 @@ ROOT = Path(__file__).resolve().parent.parent
 GOLDEN = ROOT / "tests" / "golden"
 sys.path.insert(0, str(ROOT / "tools"))
 from gen_orders import generate  # noqa: E402
+
+# The coursework program as it was first published, before any of this project's changes.
+ORIGINAL = "546e7587f30b79a8a7dc157d34f1cfa767b9b811:main/main.cpp"
 
 # name: (orders, seed, market_fraction, price_sd)
 GENERATED = {
@@ -63,8 +67,17 @@ SPAN_NEW = """            Order& matchedOrder = *match.bestMatch;  // golden-tes
 """
 
 
+def read_original():
+    """The original program's source, exactly as committed before the rebuild."""
+    try:
+        return subprocess.run(["git", "show", ORIGINAL], cwd=ROOT, check=True,
+                              capture_output=True, text=True).stdout
+    except (OSError, subprocess.CalledProcessError) as e:
+        sys.exit(f"cannot read {ORIGINAL} from git history (needs a full clone): {e}")
+
+
 def build_oracle(cxx, workdir):
-    src = (ROOT / "legacy" / "main_original.cpp").read_text()
+    src = read_original()
     for old, new in PATCHES:
         if src.count(old) != 1:
             sys.exit(f"patch anchor not found exactly once:\n{old}")
