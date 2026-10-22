@@ -73,7 +73,8 @@ jobs:
         run: |
           clang-tidy --version
           cmake --preset tidy
-          cmake --build --preset tidy --parallel 4
+          # -k 0: report every file's findings, not just the first failing one.
+          cmake --build --preset tidy --parallel 4 -- -k 0
 
   # Coverage-guided fuzzing for a fixed time per target (libFuzzer + ASan/UBSan).
   fuzz:

@@ -107,7 +107,8 @@ private:
     OrderBook book_;
     ReplayStats stats_;
     std::vector<Trade> trades_;  // trades from the current message
-    OrderId nextAggressorId_;
+    // Synthetic ids for the aggressor orders we create, far above any LOBSTER order id.
+    OrderId nextAggressorId_ = OrderId{1} << 62U;
 };
 
 }  // namespace ome::lobster

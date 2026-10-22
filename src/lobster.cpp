@@ -8,9 +8,6 @@
 namespace ome::lobster {
 namespace {
 
-// Synthetic ids for the aggressor orders we create, far above any LOBSTER order id.
-constexpr OrderId kFirstAggressorId = OrderId{1} << 62U;
-
 // LOBSTER prices are dollars x 10000; our tick is one cent.
 constexpr std::int64_t kLobsterUnitsPerTick = 10'000 / kTicksPerUnit;
 
@@ -80,8 +77,7 @@ std::optional<TopOfBook> parseOrderbookRow(std::string_view line) {
     return top;
 }
 
-Replayer::Replayer()
-    : book_({MatchingMode::Modern, std::nullopt}, *this), nextAggressorId_(kFirstAggressorId) {}
+Replayer::Replayer() : book_({MatchingMode::Modern, std::nullopt}, *this) {}
 
 std::optional<Price> Replayer::toTicks(std::int64_t lobsterPrice) {
     const auto ticks = exactTicks(lobsterPrice);
