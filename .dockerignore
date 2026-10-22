@@ -1,0 +1,6 @@
+.git
+build*/
+data/
+web/
+legacy/
+**/node_modules
