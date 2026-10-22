@@ -59,7 +59,11 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.package }}
-          path: dist/*.*
+          # The archives only: the staging folder's name (ome-v1.0.0-...) also contains dots.
+          path: |
+            dist/*.tar.gz
+            dist/*.zip
+          if-no-files-found: error
 
   publish:
     needs: build
@@ -76,6 +80,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag \
+          ls -l dist
+          gh release create "$GITHUB_REF_NAME" dist/*.tar.gz dist/*.zip --repo "$GITHUB_REPOSITORY" --verify-tag \
             --title "$GITHUB_REF_NAME" --generate-notes \
             --notes "Command-line tools: ome-cli (order files in the original format) and ome-lobster (LOBSTER replay). The web demo is on GitHub Pages; see the README."
