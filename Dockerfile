@@ -4,8 +4,9 @@
 #   docker run --rm -v "$PWD/examples:/data" ome-cli /data/input1.txt -o /data/output1.txt
 
 FROM ubuntu:24.04 AS build
-RUN apt-get update \
- && apt-get install -y --no-install-recommends g++ cmake ninja-build \
+# Timeouts and retries: the Ubuntu mirror occasionally hangs.
+RUN apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=30 update \
+ && apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=30 install -y --no-install-recommends g++ cmake ninja-build \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /src
 COPY . .
