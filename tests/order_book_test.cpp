@@ -70,7 +70,8 @@ TEST_F(ModernBook, IncomingRemainderRestsAtItsLimit) {
     EXPECT_FALSE(book.bestAsk());
 }
 
-// Bug 1 from PLAN.md: the original broke ties by comparing ids as strings.
+// Bug 1 of the original (README, "Fixed from the original"): ties were broken by comparing
+// ids as strings.
 TEST_F(ModernBook, SamePriceMatchesInArrivalOrderNotIdOrder) {
     sell(10, 5, 10'000);  // arrives first, larger id
     sell(2, 5, 10'000);

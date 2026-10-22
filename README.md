@@ -11,8 +11,8 @@ WebAssembly in your browser, with simulated traders).
 A C++20 limit order book and matching engine. It reads buy/sell orders, matches them with
 price-time priority, and reports trades. It started as a university coursework program
 (still in the git history: [`main/main.cpp` at 546e758](https://github.com/rnm35/stock-order-matching-engine/blob/546e7587f30b79a8a7dc157d34f1cfa767b9b811/main/main.cpp))
-and was rebuilt to exchange-style standards; [PLAN.md](PLAN.md) records how, phase by
-phase, with every measurement.
+and was rebuilt to exchange-style standards. Every number below was measured; each one
+says how.
 
 ## Features
 
@@ -26,7 +26,7 @@ phase, with every measurement.
 - The library never prints; it reports `Accepted`, `Trade`, `Cancelled`, `Modified` and
   `Rejected` events through a listener interface.
 - Compiles to WebAssembly: a live browser UI (depth chart, ladder, trade tape, order
-  entry, simulated traders) and an MCP server that lets Claude trade on the book.
+  entry, simulated traders) and an MCP server that exposes the book as tools.
 
 ## Build
 
@@ -177,7 +177,7 @@ flowchart LR
     file["Order file<br/>(original format)"] --> cli[ome-cli]
     lobster["LOBSTER message file"] --> lob[ome-lobster]
     ui["React UI + simulated traders"] --> wasm
-    mcp["MCP server (Claude)"] --> wasm
+    mcp["MCP server"] --> wasm
     wasm["WebAssembly bindings<br/>(numbers only)"] --> book
     cli --> book
     lob --> book
@@ -317,16 +317,18 @@ because browsers coarsen `performance.now()` too much to time single calls).
 
 ## MCP server
 
-`web/mcp/server.ts` exposes the book to an MCP client such as Claude, over stdio: tools
-`get_book`, `place_order`, `cancel_order`, `list_orders`, `get_trades` and
-`run_simulation` (let the bots trade). Claude trades as the user against the simulated
+`web/mcp/server.ts` exposes the book over stdio to any Model Context Protocol client:
+tools `get_book`, `place_order`, `cancel_order`, `list_orders`, `get_trades` and
+`run_simulation` (let the bots trade). The client trades as the user against the simulated
 market; prices go in and out as decimal strings (`"100.25"`), converted to ticks exactly.
 
+Registering it with a client, e.g. Claude Code:
+
 ```bash
-claude mcp add order-book -- node /path/to/repo/web/mcp/server.ts   # Claude Code
+claude mcp add order-book -- node /path/to/repo/web/mcp/server.ts
 ```
 
-For Claude Desktop, add to `claude_desktop_config.json`:
+or Claude Desktop (`claude_desktop_config.json`):
 `{"mcpServers": {"order-book": {"command": "node", "args": ["/path/to/repo/web/mcp/server.ts"]}}}`.
 Needs Node 22.18+ (runs the TypeScript directly) and the wasm build. `OME_MODE=legacy` and
 `OME_SEED=<n>` select the rules and the simulation seed.

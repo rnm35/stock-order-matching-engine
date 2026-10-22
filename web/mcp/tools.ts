@@ -1,5 +1,5 @@
 // MCP tools over a simulated market (the same Market the web UI uses, with the C++ engine
-// running as WebAssembly). The connected client (e.g. Claude) trades as the "user"; bots
+// running as WebAssembly). The connected client trades as the "user"; bots
 // provide liquidity. Prices cross the protocol as decimal strings ("100.25") and are
 // converted to integer ticks exactly, never through floating point.
 

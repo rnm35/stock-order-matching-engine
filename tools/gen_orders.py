@@ -5,7 +5,7 @@ Usage: python3 tools/gen_orders.py <num_orders> <output_file> [seed] [market_fra
 
 Prices are Gaussian around 100.00 (sd `price_sd`, default 2), quantities 1-100, sides 50/50.
 A fraction `market_fraction` (default 0) of orders are market orders (no price).
-With the defaults this is the generator used for the baseline benchmark in PLAN.md (seed 1);
+With the defaults this is the generator used for the README's comparison with the original (seed 1);
 the extra arguments don't change its output when left at their defaults.
 """
 import random

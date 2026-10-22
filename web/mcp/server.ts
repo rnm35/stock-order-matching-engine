@@ -1,4 +1,4 @@
-// MCP server (stdio) exposing the order book to an MCP client such as Claude.
+// MCP server (stdio) exposing the order book to Model Context Protocol clients.
 //
 //   npm --prefix web run mcp          (needs the wasm build: cmake --preset wasm ...)
 //

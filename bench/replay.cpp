@@ -3,8 +3,8 @@
 //   ome-replay <input> [--mode legacy|modern] [--repeat N]
 //
 // The file is parsed up front; only the submit() loop is timed, so the number reflects
-// the book, not file I/O or output formatting. This is a quick check for Phase 1; the
-// proper latency/throughput suite (Google Benchmark, percentiles) is Phase 3.
+// the book, not file I/O or output formatting. It is the like-for-like comparison with the
+// original program; ome-bench and ome-latency are the detailed benchmarks.
 
 #include "ome/order_book.hpp"
 #include "ome/text_format.hpp"

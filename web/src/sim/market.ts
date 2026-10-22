@@ -1,5 +1,5 @@
 // A simulated market around one engine: bots that generate order flow, a user (the person
-// in the browser, or Claude through the MCP server) placing orders, and the derived views
+// in the browser, or an MCP client) placing orders, and the derived views
 // the UI shows (trade tape, the user's orders, depth). Shared by the web app and MCP server.
 
 import { Engine, loadEngine } from "../engine/engine.ts";

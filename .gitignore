@@ -7,5 +7,3 @@ CMakeUserPresets.json
 web/src/engine/wasm/
 node_modules/
 web/dist/
-# local tooling (Claude Code launch configs etc.)
-.claude/

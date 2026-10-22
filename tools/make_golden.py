@@ -3,7 +3,8 @@
 
 The expected outputs come from the ORIGINAL coursework program, not from the new engine.
 It is read from git history (ORIGINAL below: main/main.cpp in the repository's original
-commit), so this script needs a clone with full history. Only bug 1 from PLAN.md is fixed:
+commit), so this script needs a clone with full history. Only bug 1 (README, "Fixed from
+the original") is fixed:
   - same-price ties broken by arrival order instead of comparing order ids as strings;
   - a partially filled resting order keeps its place instead of moving to the back.
 Bugs 2-4 don't affect the output file's contents, so nothing else is changed.
