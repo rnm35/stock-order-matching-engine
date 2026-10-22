@@ -1,5 +1,5 @@
-# Normalise text files to LF in the repository; Windows checkouts may convert them.
-* text=auto
+# LF everywhere, including Windows checkouts (the tools and golden files expect it).
+* text=auto eol=lf
 # Fuzz seeds are byte-exact inputs, some of them binary.
 tests/fuzz/corpus/** -text
 *.wasm binary
